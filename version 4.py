@@ -210,17 +210,17 @@ root.geometry("600x500")
 root.resizable(False, False)
 
 # Load GIF animation frames for the start screen
-file = "introVid.gif"
-frames = Image.open(file)
-image_frame_list = [ImageTk.PhotoImage(frame) for frame in ImageSequence.Iterator(frames)]
+gif = "introVid.gif"
+gif_frame = Image.open(gif)
+frame_list = [ImageTk.PhotoImage(frame) for frame in ImageSequence.Iterator(gif_frame)]
 
-def animation(count, seconds):
+def animation(count):
     # Function to animate the GIF frames on the start screen
-    im = image_frame_list[count]
-    gif_label.configure(image=im)
+    fl = frame_list[count]
+    gif_label.configure(image=fl)
     count += 1
-    if count < len(image_frame_list):
-        root.after(50, lambda: animation(count, seconds))
+    if count < len(frame_list):
+        root.after(15, lambda: animation(count))
     else:
         # Start the Arabic Learning App after animation is complete and hide the start screen
         start_arabic_learning_app()
@@ -232,15 +232,15 @@ gif_label.pack()
 
 def hide_start():
     # Hide the start screen button
-    image_button1.pack_forget()
+    start_button.pack_forget()
 
 # Load the image for the start screen button and create the button
-image1 = Image.open("start_image.png")
-image1 = image1.resize((200, 200))
-photo1 = ImageTk.PhotoImage(image1)
+start = Image.open("start_image.png")
+start = start.resize((200, 200))
+start_photo = ImageTk.PhotoImage(start)
 
-image_button1 = tk.Button(root, image=photo1, borderwidth=0, highlightthickness=0, command=lambda: animation(0, 10))
-image_button1.pack(pady=(100, 50))
+start_button = tk.Button(root, image=start_photo, borderwidth=0, highlightthickness=0, command=lambda: (animation(0)))
+start_button.pack(pady=(100, 50))
 
 # Start the main event loop for the initial start screen
 root.mainloop()

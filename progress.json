@@ -1,8 +1,15 @@
 {
-    "username": "",
-    "counter": 1,
+    "username": "ahmed",
+    "counter": 9,
     "learned_words": [
-        "Yes"
+        "Yes",
+        "I don't understand",
+        "Water",
+        "How are you?",
+        "Please (feminine)",
+        "No",
+        "Please (masculine)",
+        "Shirt",
+        "Beef"
     ]
-}{"username": "", "counter": 0}
-{"username": "", "counter": 0}
+}
