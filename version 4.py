@@ -141,10 +141,11 @@ class FlashcardApp:
         self.window.destroy()
 
     def run(self):
-        # Ask for the user's name
-        username = askstring("Username", "What's your name?")
-        if username:
-            self.username = username
+        # Ask for the user's name using tk.simpledialog.askstring
+        while not self.username:  # Keep prompting until a valid name is provided
+            username = askstring("Username", "What's your name?")
+            if username:
+                self.username = username
 
         # Run the main loop of the window
         self.window.mainloop()
@@ -172,12 +173,16 @@ frames = Image.open(file)
 image_frame_list = [ImageTk.PhotoImage(frame) for frame in ImageSequence.Iterator(frames)]
 
 # Function to animate the frames of the GIF
-def animation(count):
+def animation(count, seconds):
     im = image_frame_list[count]
     gif_label.configure(image=im)
     count += 1
     if count < len(image_frame_list):
-        root.after(50, lambda: animation(count))
+        root.after(50, lambda: animation(count, seconds))
+    else:
+        # After the animation finishes, start the FlashcardApp
+        root.after(seconds * 10, start)
+        hide_start()
 
 # Creates a label widget to display the animated GIF
 gif_label = tk.Label(root, image="")
@@ -193,9 +198,8 @@ image1 = image1.resize((300, 100))
 photo1 = ImageTk.PhotoImage(image1)
 
 # Creates a button widget for the start button
-image_button1 = tk.Button(root, image=photo1, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: (root.after(1300, start), hide_start(), animation(0)))
+image_button1 = tk.Button(root, image=photo1, bg="#F1EFE7", borderwidth=0, highlightthickness=0, command=lambda: animation(0, 10))  # Set seconds to 10
 image_button1.pack(pady=(100, 50))
 
 # Start the main event loop for the start screen
 root.mainloop()
-#hi
