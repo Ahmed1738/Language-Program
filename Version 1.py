@@ -29,7 +29,7 @@ class FlashcardApp:
 
     def load_words(self, filename):
         # Load words and their translations from a CSV file
-        with open(filename, 'r') as file:
+        with open(filename, 'r',  encoding='utf-8') as file:
             reader = csv.reader(file)
             for row in reader:
                 word, translation = row

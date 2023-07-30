@@ -49,9 +49,6 @@ class FlashcardApp:
         # Initialize the learned_words list
         self.learned_words = []
 
-        # Display the first word
-        self.next_word()
-
     def load_words(self, filename):
         # Load words, their translations, and their pronunciations from a JSON file
         if os.path.exists(filename):
@@ -129,7 +126,7 @@ class FlashcardApp:
         self.review_button.pack()
 
     def quit(self):
-        # Save the user's progress to a JSON file called 'progress.json'
+        # saves the user's progress to a JSON file called 'progress.json'
         self.save_progress("progress.json")
 
         # Show a popup with the user's progress

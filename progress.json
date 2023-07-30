@@ -1,5 +1,8 @@
-{"username": "ahmed", "counter": 7}
-{"username": "", "counter": 7}
-{"username": "ahmed", "counter": 16}
-
-{"username": "ahmed", "counter": 5}
+{
+    "username": "",
+    "counter": 1,
+    "learned_words": [
+        "Yes"
+    ]
+}{"username": "", "counter": 0}
+{"username": "", "counter": 0}
