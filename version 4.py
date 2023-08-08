@@ -157,7 +157,7 @@ class ArabicLearningApp:
         # Create a popup window to ask for the user's name
         name_window = tk.Toplevel(self.window)
         name_window.title("Username")
-        name_window.geometry("300x100")
+        name_window.geometry("300x150")
 
         # Set appearance of the popup window
         bg_color = "#E1F3F8"
@@ -170,9 +170,16 @@ class ArabicLearningApp:
         name_window.configure(bg=bg_color)
 
         def save_name():
-            # Save the user's name and close the popup window
-            self._username = name_entry.get().strip()
-            name_window.destroy()
+            # Validate the user's name and show a pop-up message if invalid
+            username = name_entry.get().strip()
+
+            if not username:
+                messagebox.showwarning("Invalid Input", "Please enter a valid name.")
+            elif not username.isalpha():
+                messagebox.showwarning("Invalid Input", "Please use only English letters in the name.")
+            else:
+                self._username = username
+                name_window.destroy()
 
         name_label = tk.Label(name_window, text="Enter your name:", bg=bg_color, fg=fg_color, font=(font_family, 14))
         name_label.pack(pady=5)
