@@ -52,7 +52,7 @@ class FlashcardApp:
     def load_words(self, filename):
         # Load words, their translations, and their pronunciations from a JSON file
         if os.path.exists(filename):
-            with open(filename, 'r') as file:
+            with open(filename, 'r', encoding='utf-8') as file:
                 data = json.load(file)
                 self.words = data.get('words', {})
                 self.pronunciations = data.get('pronunciations', {})
